@@ -5,6 +5,9 @@
     <ClCompile Include="src\Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\StatesManager\GameStateMachine.cpp">
+      <Filter>StatesManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -19,9 +22,6 @@
     <ClInclude Include="src\States\GameOverState.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="src\StatesManager\GameStateMachine.h">
-      <Filter>States</Filter>
-    </ClInclude>
     <ClInclude Include="src\States\MainMenuState.h">
       <Filter>States</Filter>
     </ClInclude>
@@ -31,6 +31,9 @@
     <ClInclude Include="src\States\PlayState.h">
       <Filter>States</Filter>
     </ClInclude>
+    <ClInclude Include="src\StatesManager\GameStateMachine.h">
+      <Filter>StatesManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -38,6 +41,9 @@
     </Filter>
     <Filter Include="States">
       <UniqueIdentifier>{60ded3da-4d4b-4d11-b1d9-be06419f2b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StatesManager">
+      <UniqueIdentifier>{d9259893-045a-4c08-9ee6-69b189c1f366}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

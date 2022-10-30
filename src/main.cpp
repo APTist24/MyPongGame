@@ -1,7 +1,7 @@
 #include "SDL.h"
 #include <iostream>
-#include "Game.h"
-#include "GameSettings.h"
+#include "Game/Game.h"
+#include "Game/GameSettings.h"
 
 
 int main(int argc, char* argv[])

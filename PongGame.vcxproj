@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\StatesManager\GameStateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h" />
