@@ -1,66 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Исходные файлы">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameSettings.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\GameState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\GameOverState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StatesManager\GameStateMachine.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\MainMenuState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\PauseState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\PlayState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <Filter Include="Game">
-      <UniqueIdentifier>{d6ee3284-cbb2-4227-9900-cc3ce86b694f}</UniqueIdentifier>
+      <UniqueIdentifier>{60bb25a4-f47c-4b9e-8a27-90e63dbb086c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameStates">
-      <UniqueIdentifier>{de482e53-f045-4735-ae23-58be7ad0b05b}</UniqueIdentifier>
+    <Filter Include="States">
+      <UniqueIdentifier>{60ded3da-4d4b-4d11-b1d9-be06419f2b20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameStates\Base">
-      <UniqueIdentifier>{5da41199-292f-4eae-a28d-410dd66a999b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameStateManager">
-      <UniqueIdentifier>{b6f8262e-67bc-4a81-9de6-1e32cae62332}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSettings.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>GameStates\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuState.h">
-      <Filter>GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseState.h">
-      <Filter>GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayState.h">
-      <Filter>GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOverState.h">
-      <Filter>GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStateMachine.h">
-      <Filter>GameStateManager</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
