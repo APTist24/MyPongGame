@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObjects\Ball.cpp" />
+    <ClCompile Include="src\GameObjects\Enemy.cpp" />
     <ClCompile Include="src\GameObjects\GameObject.cpp" />
     <ClCompile Include="src\GameObjects\MenuButton.cpp" />
     <ClCompile Include="src\GameObjects\Player.cpp" />
@@ -33,6 +35,8 @@
     <ClCompile Include="src\TexturesManager\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObjects\Ball.h" />
+    <ClInclude Include="src\GameObjects\Enemy.h" />
     <ClInclude Include="src\GameObjects\GameObject.h" />
     <ClInclude Include="src\GameObjects\IGameObject.h" />
     <ClInclude Include="src\GameObjects\LoaderParams.h" />

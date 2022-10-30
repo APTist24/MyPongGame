@@ -4,6 +4,9 @@
 #include "Game.h"
 #include "InputHandler.h"
 #include "PauseState.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "GameSettings.h"
 
 const std::string PlayState::playID = "PLAY";
 
@@ -33,16 +36,17 @@ void PlayState::render()
 }
 bool PlayState::onEnter()
 {
-	if (!TextureManager::Instance()->load("imgs/start.png",
-		"playbutton", Game::Instance()->getRenderer()))
+	if (!TextureManager::Instance()->load("imgs/player.png",
+		"player", Game::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TextureManager::Instance()->load("imgs/exit.png",
-		"exitbutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
+
+	GameObject* player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
+	gameObjects.push_back(player);
+
+	GameObject* enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
+	gameObjects.push_back(enemy);
 
 	return true;
 }

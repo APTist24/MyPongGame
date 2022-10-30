@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <SDL.h>
 #include "InputHandler.h"
+#include "GameSettings.h"
 
 Player::Player(const LoaderParams* pParams) :
 	GameObject(pParams)
@@ -12,16 +13,14 @@ void Player::draw() {
 }
 
 void Player::update() {
+	acceleration.setY(0);
 	velocity.setX(0);
 	velocity.setY(0);
 
 	handleInput();
 
-	currentFrame = int(((SDL_GetTicks() / 100) % 4));
-	/***MOVE IMAGE TO MOUSE*/
-	//Vector2D* vec = InputHandler::Instance()->getMousePosition();
-	//m_velocity = (*vec - m_position) / 10;
-	/**********************/
+	currentFrame = int(((SDL_GetTicks() / 100) % 1));
+
 	GameObject::update();
 }
 
@@ -30,24 +29,20 @@ void Player::clean() {
 
 void Player::handleInput()
 {
-	//if (InputHandler::Instance()->getMouseButtonState(LEFT))
-	//{
-	//	m_velocity.setX(1);
-	//}
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-	//{
-	//	m_velocity.setX(2);
-	//}
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-	//{
-	//	m_velocity.setX(-2);
-	//}
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-	//{
-	//	m_velocity.setY(-2);
-	//}
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
-	//{
-	//	m_velocity.setY(2);
-	//}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	{
+		//collides check
+		if (position.getY() > 0) {
+			acceleration.setY(-5);
+			velocity.setY(-2);
+		}
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+	{
+		if (position.getY() + height < HEIGHT)
+		{
+			acceleration.setY(5);
+			velocity.setY(2);
+		}
+	}
 }
