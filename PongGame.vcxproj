@@ -104,7 +104,7 @@
     <IncludePath>C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;C:\src\PongGame\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\src\PongGame\imgs;C:\src\PongGame\src\GameObjects;C:\src\PongGame\src\TexturesManager;C:\src\PongGame\src\LibExt;C:\src\PongGame\src\InputHandler;C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\imgs;$(ProjectDir)\src\GameObjects;$(ProjectDir)\src\TexturesManager;$(ProjectDir)\src\LibExt;$(ProjectDir)\src\InputHandler;$(ProjectDir)\src\StatesManager;$(ProjectDir)\src\States;$(ProjectDir)\src\Game;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
