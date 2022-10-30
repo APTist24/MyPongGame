@@ -28,6 +28,8 @@ public:
 
 	bool running() { return isRunning; }
 
+	class SDL_Renderer* getRenderer() const { return Renderer; }
+
 private:
 
 	bool isRunning;

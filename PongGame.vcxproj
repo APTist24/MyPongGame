@@ -19,13 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObjects\GameObject.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\StatesManager\GameStateMachine.cpp" />
     <ClCompile Include="src\States\MenuState.cpp" />
+    <ClCompile Include="src\TexturesManager\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObjects\GameObject.h" />
+    <ClInclude Include="src\GameObjects\IGameObject.h" />
+    <ClInclude Include="src\GameObjects\LoaderParams.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameSettings.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
@@ -36,6 +41,7 @@
     <ClInclude Include="src\States\MenuState.h" />
     <ClInclude Include="src\States\PauseState.h" />
     <ClInclude Include="src\States\PlayState.h" />
+    <ClInclude Include="src\TexturesManager\TextureManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -93,7 +99,7 @@
     <IncludePath>C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;C:\src\PongGame\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\src\PongGame\src\InputHandler;C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\PongGame\src\TexturesManager;C:\src\PongGame\src\LibExt;C:\src\PongGame\src\InputHandler;C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

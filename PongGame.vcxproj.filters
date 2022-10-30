@@ -14,6 +14,12 @@
     <ClCompile Include="src\InputHandler\InputHandler.cpp">
       <Filter>InputHandler</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObjects\GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TexturesManager\TextureManager.cpp">
+      <Filter>TextureManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -46,6 +52,18 @@
     <ClInclude Include="src\LibExt\Vector2D.h">
       <Filter>LibExt</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameObjects\GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\IGameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\LoaderParams.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TexturesManager\TextureManager.h">
+      <Filter>TextureManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -62,6 +80,12 @@
     </Filter>
     <Filter Include="LibExt">
       <UniqueIdentifier>{775645a4-a71d-4e4a-ad31-e6de63b57362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{3a213d5e-6c50-4eb2-a2a4-b4c938ea36b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TextureManager">
+      <UniqueIdentifier>{736121b6-8ce4-480a-821b-ac14782ff8b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -2,6 +2,8 @@
 #define __InputHandler__
 
 #include <vector>
+#include "Vector2D.h"
+#include "SDL.h"
 
 
 enum mouse_buttons
@@ -21,7 +23,7 @@ public:
 	static InputHandler* Instance();
 
 	void update();
-	bool isKeyDown(class SDL_Scancode key);
+	bool isKeyDown(SDL_Scancode key);
 
 private:
 	// handle keyboard events
@@ -32,17 +34,17 @@ private:
 	void onMouseButtonDown(SDL_Event& event);
 	void onMouseButtonUp(SDL_Event& event);
 
-	std::vector<bool> m_mouseButtonStates;
+	std::vector<bool> mouseButtonStates;
 
 private:
 
-	InputHandler() {};
+	InputHandler();
 
 	static InputHandler* s_pInstance;
 
-	Vector2D* m_mousePosition = nullptr;
+	Vector2D* mousePosition = nullptr;
 
-	Uint8* m_keystates;
+	Uint8* keystates = 0;
 
 };
 
