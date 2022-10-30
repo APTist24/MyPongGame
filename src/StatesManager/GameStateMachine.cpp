@@ -1,4 +1,5 @@
 #include "GameStateMachine.h"
+#include "GameState.h"
 
 
 void GameStateMachine::pushState(GameState* pState)
@@ -27,10 +28,10 @@ void GameStateMachine::changeState(GameState* pState)
 		{
 			return; // do nothing
 		}
-		if (m_gameStates.back()->onExit())
+		if (vec_gameStates.back()->onExit())
 		{
-			delete m_gameStates.back();
-			m_gameStates.pop_back();
+			delete vec_gameStates.back();
+			vec_gameStates.pop_back();
 		}
 	}
 	// push back our new state

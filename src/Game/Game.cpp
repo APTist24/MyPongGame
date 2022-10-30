@@ -2,6 +2,10 @@
 #include "SDL.h"
 #include <iostream>
 
+#include "GameStateMachine.h"
+#include "InputHandler.h"
+#include "MenuState.h"
+
 Game* Game::instance = nullptr;
 
 Game* Game::Instance()
@@ -40,27 +44,29 @@ bool Game::init(const char* title, int width,
 
 	isRunning = true; // everything inited successfully, start the main loop
 
-	//m_pGameStateMachine = new GameStateMachine();
-	//m_pGameStateMachine->changeState(new MenuState());
-
-	//InputHandler::Instance()->initialiseJoysticks();
+	StateManager = new GameStateMachine();
+	StateManager->changeState(new MenuState());
 
 	return true;
 }
 
 void Game::render()
 {
+	SDL_RenderClear(Renderer); // clear the renderer to the draw color
 
+	StateManager->render();
+
+	SDL_RenderPresent(Renderer); // draw to the screen
 }
 
 void Game::update()
 {
-
+	StateManager->update();
 }
 
 void Game::handleEvents()
 {
-
+	InputHandler::Instance()->update();
 }
 
 void Game::clean()

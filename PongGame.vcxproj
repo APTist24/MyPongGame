@@ -20,16 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Game.cpp" />
+    <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\StatesManager\GameStateMachine.cpp" />
+    <ClCompile Include="src\States\MenuState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameSettings.h" />
+    <ClInclude Include="src\InputHandler\InputHandler.h" />
+    <ClInclude Include="src\LibExt\Vector2D.h" />
     <ClInclude Include="src\StatesManager\GameStateMachine.h" />
     <ClInclude Include="src\States\GameOverState.h" />
     <ClInclude Include="src\States\GameState.h" />
-    <ClInclude Include="src\States\MainMenuState.h" />
+    <ClInclude Include="src\States\MenuState.h" />
     <ClInclude Include="src\States\PauseState.h" />
     <ClInclude Include="src\States\PlayState.h" />
   </ItemGroup>
@@ -87,6 +91,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;C:\src\PongGame\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\src\PongGame\src\InputHandler;C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
