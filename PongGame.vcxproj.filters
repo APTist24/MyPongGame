@@ -29,6 +29,12 @@
     <ClCompile Include="src\States\PlayState.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="src\States\GameOverState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\States\PauseState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">

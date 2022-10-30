@@ -26,7 +26,9 @@
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\StatesManager\GameStateMachine.cpp" />
+    <ClCompile Include="src\States\GameOverState.cpp" />
     <ClCompile Include="src\States\MenuState.cpp" />
+    <ClCompile Include="src\States\PauseState.cpp" />
     <ClCompile Include="src\States\PlayState.cpp" />
     <ClCompile Include="src\TexturesManager\TextureManager.cpp" />
   </ItemGroup>

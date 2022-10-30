@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "InputHandler.h"
-//#include "PauseState.h"
+#include "PauseState.h"
 
 const std::string PlayState::playID = "PLAY";
 
@@ -11,7 +11,7 @@ void PlayState::update()
 {
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		//Game::Instance()->getStateMachine()->pushState(new PauseState());
+		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
