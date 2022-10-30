@@ -2,18 +2,19 @@
 #define __GameStateMachine__
 
 #include <vector>
+#include "GameState.h"
 
 class GameStateMachine
 {
 public:
-	void pushState(class GameState* pState);
-	void changeState(class GameState* pState);
+	void pushState(GameState* pState);
+	void changeState(GameState* pState);
 	void popState();
 
 	void update();
 	void render();
 private:
-	std::vector<class GameState*> vec_gameStates;
+	std::vector<GameState*> vec_gameStates;
 };
 
 #endif

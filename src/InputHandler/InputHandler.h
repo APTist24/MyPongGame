@@ -25,6 +25,16 @@ public:
 	void update();
 	bool isKeyDown(SDL_Scancode key);
 
+	bool getMouseButtonState(int buttonNumber)
+	{
+		return mouseButtonStates[buttonNumber];
+	}
+
+	Vector2D* getMousePosition()
+	{
+		return mousePosition;
+	}
+
 private:
 	// handle keyboard events
 	void onKeyDown();

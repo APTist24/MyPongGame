@@ -2,6 +2,7 @@
 #define __Game__
 
 #include <memory>
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -30,6 +31,8 @@ public:
 
 	class SDL_Renderer* getRenderer() const { return Renderer; }
 
+	GameStateMachine* getStateMachine() { return StateManager; }
+
 private:
 
 	bool isRunning;
@@ -37,7 +40,7 @@ private:
 	class SDL_Window* Window;
 	class SDL_Renderer* Renderer;
 
-	class GameStateMachine* StateManager;
+	GameStateMachine* StateManager;
 
 };
 

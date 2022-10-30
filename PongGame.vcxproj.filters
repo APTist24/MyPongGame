@@ -20,6 +20,15 @@
     <ClCompile Include="src\TexturesManager\TextureManager.cpp">
       <Filter>TextureManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObjects\Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\MenuButton.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\States\PlayState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -63,6 +72,12 @@
     </ClInclude>
     <ClInclude Include="src\TexturesManager\TextureManager.h">
       <Filter>TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\MenuButton.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

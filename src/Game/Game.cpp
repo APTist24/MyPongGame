@@ -2,7 +2,6 @@
 #include "SDL.h"
 #include <iostream>
 
-#include "GameStateMachine.h"
 #include "InputHandler.h"
 #include "MenuState.h"
 

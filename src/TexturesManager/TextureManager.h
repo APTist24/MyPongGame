@@ -16,7 +16,25 @@ public:
 	static TextureManager* Instance();
 
 	bool load(std::string fileName, std::string
-		id, SDL_Renderer* pRenderer);
+		id, SDL_Renderer* pRenderer)
+	{
+		SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+		if (pTempSurface == nullptr)
+		{
+			return false;
+		}
+		SDL_Texture* pTexture =
+			SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+		SDL_FreeSurface(pTempSurface);
+		// everything went ok, add the texture to our list
+		if (pTexture != nullptr)
+		{
+			textureMap[id] = pTexture;
+			return true;
+		}
+		// reaching here means something went wrong
+		return false;
+	}
 
 	void draw(std::string id, int x, int y, int
 		width, int height, SDL_Renderer* pRenderer,

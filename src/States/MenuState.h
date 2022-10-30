@@ -11,12 +11,12 @@ public:
 	virtual void render();
 	virtual bool onEnter();
 	virtual bool onExit();
-	virtual std::string getStateID() const { return s_menuID; }
+	virtual std::string getStateID() const { return menuID; }
 
 private:
-	static const std::string s_menuID;
+	static const std::string menuID;
 
-	std::vector<class GameObject*> m_gameObjects;
+	std::vector<class GameObject*> gameObjects;
 
 	static void onPlayPress();
 	static void onQuitPress();

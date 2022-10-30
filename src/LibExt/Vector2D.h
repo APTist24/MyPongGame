@@ -11,8 +11,8 @@ public:
 	float getX() { return x; }
 	float getY() { return y; }
 
-	void setX(float x) { x = x; }
-	void setY(float y) { y = y; }
+	void setX(float x_) { x = x_; }
+	void setY(float y_) { y = y_; }
 
 	float length() { return sqrt(x * x + y * y); }
 
