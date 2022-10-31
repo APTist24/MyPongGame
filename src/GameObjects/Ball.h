@@ -3,6 +3,8 @@
 
 #include "GameObject.h"
 
+#define BALL_SIZE 15
+#define BALL_SPEED 7
 
 class Ball : public GameObject
 {

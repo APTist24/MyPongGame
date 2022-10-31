@@ -3,11 +3,12 @@
 #include "InputHandler.h"
 #include "GameSettings.h"
 
+
 Ball::Ball(const LoaderParams* pParams) :
 	GameObject(pParams)
 {
-	velocity.setX(5);
-	velocity.setY(5);
+	velocity.setX(BALL_SPEED);
+	velocity.setY(BALL_SPEED);
 
 }
 
@@ -29,23 +30,33 @@ void Ball::clean() {
 
 void Ball::CollisionCheck()
 {
-	if (position.getY() < 1)
+	//top
+	if (position.getY() < 0)
 	{
-		//velocity.setX(-5);
-		velocity.setY(5);
+		velocity.setY(BALL_SPEED);
+		return;
 	}
-	if (position.getY() + 15 > HEIGHT)
+	//bot
+	if (position.getY() + BALL_SIZE > HEIGHT)
 	{
-		velocity.getX();
-		velocity.setY(-5);
+		velocity.setY(-BALL_SPEED);
+		return;
 	}
-	if (position.getX() + 25 > WIDTH)
+	//ai side
+	if (position.getX()  + BALL_SIZE > WIDTH)
 	{
-		velocity.setX(-5);
+		velocity.setX(-BALL_SPEED);
+		//goal, increment score
+		return;
 	}
-	if (position.getX() - 25 < 0)
+	//player side
+	if (position.getX()  < 0)
 	{
-		velocity.setX(5);
+		velocity.setX(BALL_SPEED);
+		//goal, increment score
+		return;
 	}
 
 }
+
+//need reset function after goal

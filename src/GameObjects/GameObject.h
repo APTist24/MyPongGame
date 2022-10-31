@@ -17,6 +17,7 @@ public:
 	Vector2D& getPosition() { return position; }
 	int getWidth() { return width; }
 	int getHeight() { return height; }
+	Vector2D& getVelocity() { return velocity; }
 
 protected:
 	Vector2D position;

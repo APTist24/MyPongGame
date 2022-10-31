@@ -17,17 +17,15 @@ void PlayState::update()
 	{
 		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
-	for (int i = 0; i < gameObjects.size(); i++)
-	{
-		gameObjects[i]->update();
-	}
 
-	//if (checkCollision(dynamic_cast<GameObject*>
-	//	(gameObjects[0]), dynamic_cast<GameObject*>
-	//	(gameObjects[1])))
-	{
-		//Game::Instance()->getStateMachine()->pushState(new GameOverState());
-	}
+	for (auto obj: gameObjects)
+		if(obj) obj->update();
+
+	if (checkCollision(enemy))
+		ball->getVelocity().setX(-BALL_SPEED);
+	if (checkCollision(player))
+		ball->getVelocity().setX(BALL_SPEED);
+
 }
 
 void PlayState::render()
@@ -49,13 +47,13 @@ bool PlayState::onEnter()
 		return false;
 	}
 
-	GameObject* player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
+	player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
 	gameObjects.push_back(player);
 
-	GameObject* enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
+	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
 	gameObjects.push_back(enemy);
 
-	GameObject* ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"));
+	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"));
 	gameObjects.push_back(ball);
 
 	return true;
@@ -72,8 +70,28 @@ bool PlayState::onExit()
 	return true;
 }
 
-bool PlayState::checkCollision(GameObject* p1, GameObject*
-	p2)
+bool PlayState::checkCollision(GameObject* obj)
 {
-	return false;
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	leftA = obj->getPosition().getX();
+	rightA = obj->getPosition().getX() + obj->getWidth();
+	topA = obj->getPosition().getY();
+	bottomA = obj->getPosition().getY() + obj->getHeight();
+
+	//Calculate the sides of rect Ball
+	leftB = ball->getPosition().getX();
+	rightB = ball->getPosition().getX() + ball->getWidth();
+	topB = ball->getPosition().getY();
+	bottomB = ball->getPosition().getY() + ball->getHeight();
+
+	//If any of the sides from A are outside of Ball
+	if (bottomA <= topB) { return false; }
+	if (topA >= bottomB) { return false; }
+	if (rightA <= leftB) { return false; }
+	if (leftA >= rightB) { return false; }
+	return true;
 }
