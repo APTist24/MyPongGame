@@ -6,6 +6,7 @@
 #include "PauseState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Ball.h"
 #include "GameSettings.h"
 
 const std::string PlayState::playID = "PLAY";
@@ -42,11 +43,20 @@ bool PlayState::onEnter()
 		return false;
 	}
 
+	if (!TextureManager::Instance()->load("imgs/ball.png",
+		"ball", Game::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
 	GameObject* player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
 	gameObjects.push_back(player);
 
 	GameObject* enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
 	gameObjects.push_back(enemy);
+
+	GameObject* ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"));
+	gameObjects.push_back(ball);
 
 	return true;
 }
