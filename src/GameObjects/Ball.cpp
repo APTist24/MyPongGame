@@ -26,7 +26,7 @@ void Ball::update() {
 	GameObject::update();
 }
 
-
+//MOVE IT TO PLAYSTATE
 void Ball::CollisionCheck()
 {
 	//top
@@ -45,14 +45,14 @@ void Ball::CollisionCheck()
 	if (position.getX()  + BALL_SIZE > WIDTH)
 	{
 		velocity.setX(-BALL_SPEED);
-		//goal, increment score
+		playState->Goal(0);
 		return;
 	}
 	//player side
 	if (position.getX()  < 0)
 	{
 		velocity.setX(BALL_SPEED);
-		//goal, increment score
+		playState->Goal(1);
 		return;
 	}
 

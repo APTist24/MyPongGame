@@ -14,6 +14,8 @@ public:
 
 	bool checkCollision(class GameObject* obj);
 
+	void Goal(const uint8_t playerID);
+
 	virtual std::string getStateID() const { return playID; }
 
 private:
@@ -26,7 +28,6 @@ private:
 	class GameScore* playerScore;
 	class GameScore* enemyScore;
 
-	void Goal(const uint8_t playerID);
 };
 
 #endif
