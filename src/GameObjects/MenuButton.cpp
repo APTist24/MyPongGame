@@ -8,10 +8,12 @@ MenuButton::MenuButton(const LoaderParams* pParams,
 {
 	currentFrame = MOUSE_OUT; 
 }
+
 void MenuButton::draw()
 {
 	GameObject::draw();
 }
+
 void MenuButton::update()
 {
 	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
@@ -39,6 +41,7 @@ void MenuButton::update()
 		currentFrame = MOUSE_OUT;
 	}
 }
+
 void MenuButton::clean()
 {
 	GameObject::clean();

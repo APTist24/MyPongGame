@@ -23,6 +23,10 @@ private:
 	class GameObject* player;
 	class GameObject* enemy;
 	class GameObject* ball;
+	class GameScore* playerScore;
+	class GameScore* enemyScore;
+
+	void Goal(const uint8_t playerID);
 };
 
 #endif

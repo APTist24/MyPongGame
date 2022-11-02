@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -22,6 +22,7 @@
     <ClCompile Include="src\GameObjects\Ball.cpp" />
     <ClCompile Include="src\GameObjects\Enemy.cpp" />
     <ClCompile Include="src\GameObjects\GameObject.cpp" />
+    <ClCompile Include="src\GameObjects\GameScore.cpp" />
     <ClCompile Include="src\GameObjects\MenuButton.cpp" />
     <ClCompile Include="src\GameObjects\Player.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="src\GameObjects\Ball.h" />
     <ClInclude Include="src\GameObjects\Enemy.h" />
     <ClInclude Include="src\GameObjects\GameObject.h" />
+    <ClInclude Include="src\GameObjects\GameScore.h" />
     <ClInclude Include="src\GameObjects\IGameObject.h" />
     <ClInclude Include="src\GameObjects\LoaderParams.h" />
     <ClInclude Include="src\GameObjects\MenuButton.h" />

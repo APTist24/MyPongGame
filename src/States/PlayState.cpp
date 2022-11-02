@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Ball.h"
+#include "GameScore.h"
 #include "GameSettings.h"
 
 const std::string PlayState::playID = "PLAY";
@@ -32,6 +33,8 @@ void PlayState::render()
 {
 	for (auto obj : gameObjects)
 		if(obj) obj->draw();
+	//draw central line
+	
 }
 bool PlayState::onEnter()
 {
@@ -53,8 +56,14 @@ bool PlayState::onEnter()
 	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
 	gameObjects.push_back(enemy);
 
-	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"));
+	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"), this);
 	gameObjects.push_back(ball);
+
+	playerScore = new GameScore(new LoaderParams(WIDTH / 4, HEIGHT / 5, 50, 50, nullptr));
+	gameObjects.push_back(playerScore);
+
+	enemyScore = new GameScore(new LoaderParams((WIDTH/ 2) + WIDTH / 4, HEIGHT / 5, 50, 50, nullptr));
+	gameObjects.push_back(enemyScore);
 
 	return true;
 }
@@ -70,7 +79,7 @@ bool PlayState::onExit()
 	return true;
 }
 
-bool PlayState::checkCollision(GameObject* obj)
+bool PlayState::checkCollision(GameObject* obj) //with ball
 {
 	int leftA, leftB;
 	int rightA, rightB;
@@ -95,3 +104,10 @@ bool PlayState::checkCollision(GameObject* obj)
 	if (leftA >= rightB) { return false; }
 	return true;
 }
+
+void PlayState::Goal(const uint8_t playerID)
+{
+	//playerID = 0, enemyID = 1
+	!playerID ? playerScore->IncreaseScore() : enemyScore->IncreaseScore();
+}
+

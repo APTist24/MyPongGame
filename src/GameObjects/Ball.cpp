@@ -2,10 +2,11 @@
 #include <SDL.h>
 #include "InputHandler.h"
 #include "GameSettings.h"
+#include "PlayState.h"
 
 
-Ball::Ball(const LoaderParams* pParams) :
-	GameObject(pParams)
+Ball::Ball(const LoaderParams* pParams, PlayState* ps) :
+	GameObject(pParams), playState(ps)
 {
 	velocity.setX(BALL_SPEED);
 	velocity.setY(BALL_SPEED);
@@ -20,13 +21,11 @@ void Ball::update() {
 
 	CollisionCheck();
 
-	currentFrame = int(((SDL_GetTicks() / 100) % 1));
+	currentFrame = 0;
 
 	GameObject::update();
 }
 
-void Ball::clean() {
-}
 
 void Ball::CollisionCheck()
 {

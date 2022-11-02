@@ -9,22 +9,19 @@ Enemy::Enemy(const LoaderParams* pParams) :
 }
 
 void Enemy::draw() {
-	GameObject::draw(); // we now use SDLGameObject
+	GameObject::draw();
 }
 
 void Enemy::update() {
-	acceleration.setY(0);
+
 	velocity.setX(0);
 	velocity.setY(0);
 
 	handleInput();
 
-	currentFrame = int(((SDL_GetTicks() / 100) % 1));
+	currentFrame = 0;
 
 	GameObject::update();
-}
-
-void Enemy::clean() {
 }
 
 void Enemy::handleInput()

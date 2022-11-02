@@ -19,13 +19,11 @@ void Player::update() {
 
 	handleInput();
 
-	currentFrame = int(((SDL_GetTicks() / 100) % 1));
+	currentFrame = 0;
 
 	GameObject::update();
 }
 
-void Player::clean() {
-}
 
 void Player::handleInput()
 {
