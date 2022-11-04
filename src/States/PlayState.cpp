@@ -73,10 +73,10 @@ bool PlayState::onEnter()
 	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"), ball);
 	gameObjects.push_back(enemy);
 
-	playerScore = new GameScore(new LoaderParams(WIDTH / 4, HEIGHT / 5, 50, 50, "player"));
+	playerScore = new GameScore(new LoaderParams(WIDTH / 4, HEIGHT / 5, 50, 50, ""), { (WIDTH / 2) - 25,5,0,0});
 	gameObjects.push_back(playerScore);
 
-	enemyScore = new GameScore(new LoaderParams((WIDTH/ 2) + WIDTH / 4, HEIGHT / 5, 50, 50, "player"));
+	enemyScore = new GameScore(new LoaderParams((WIDTH/ 2) + WIDTH / 4, HEIGHT / 5, 50, 50, ""), { (WIDTH /2) + 25, 5,0,0 });
 	gameObjects.push_back(enemyScore);
 
 	return true;

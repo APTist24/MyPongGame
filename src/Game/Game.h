@@ -29,9 +29,12 @@ public:
 
 	bool running() { return isRunning; }
 
-	class SDL_Renderer* getRenderer() const { return Renderer; }
+	class SDL_Renderer* getRenderer() { return Renderer; }
+
+	class _TTF_Font* getFont() { return Font; }
 
 	GameStateMachine* getStateMachine() { return StateManager; }
+
 
 private:
 

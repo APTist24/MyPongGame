@@ -14,7 +14,7 @@ Ball::Ball(const LoaderParams* pParams) :
 }
 
 void Ball::draw() {
-	GameObject::draw(); // we now use SDLGameObject
+	GameObject::draw();
 }
 
 void Ball::update() {

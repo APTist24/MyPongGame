@@ -44,7 +44,7 @@ bool Game::init(const char* title, int width,
 		std::cerr << "Unable to init TTF: " << TTF_GetError() << std::endl;
 	}
 
-	Font = TTF_OpenFont("C:/Windows/Fonts/arial.ttf", 28);
+	Font = TTF_OpenFont("C:/Windows/Fonts/arial.ttf", 35);
 	if (!Font) {
 		std::cerr << "Unable to open font: " << TTF_GetError() << std::endl;
 	}

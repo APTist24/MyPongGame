@@ -32,7 +32,7 @@ void Player::handleInput()
 		//collides check
 		if (position.getY() > 0) {
 			acceleration.setY(-5);
-			velocity.setY(-2);
+			velocity.setY(-10);
 		}
 	}
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
@@ -40,7 +40,7 @@ void Player::handleInput()
 		if (position.getY() + height < HEIGHT)
 		{
 			acceleration.setY(5);
-			velocity.setY(2);
+			velocity.setY(10);
 		}
 	}
 }

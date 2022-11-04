@@ -4,7 +4,10 @@
 #include <string>
 #include <map>
 #include "SDL.h"
+#include "SDL_ttf.h"
 #include <SDL_image.h>
+#include <iostream>
+#include "Game.h"
 
 class TextureManager
 {
@@ -34,6 +37,27 @@ public:
 		}
 	    //something wrong if we here
 		return false;
+	}
+
+	SDL_Texture* createTextureFromText(const std::string& text)
+	{
+		// create a surface which contains the desired text.
+		SDL_Color color{ 0xff, 0xff, 0xff, 0xff };
+		auto surface = TTF_RenderText_Blended(Game::Instance()->getFont(), text.c_str(), color);
+		if (!surface) {
+			std::cerr << "Unable to create a surface with a text: " << TTF_GetError() << std::endl;
+			return nullptr;
+		}
+
+		// create a texture from the text surface.
+		auto texture = SDL_CreateTextureFromSurface(Game::Instance()->getRenderer(), surface);
+		SDL_FreeSurface(surface);
+		if (texture == nullptr) {
+			std::cerr << "Unable to create texture from a text surface: " << SDL_GetError() << std::endl;
+			return nullptr;
+		}
+
+		return texture;
 	}
 
 	void draw(std::string id, int x, int y, int
