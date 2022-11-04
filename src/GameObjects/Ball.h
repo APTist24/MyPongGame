@@ -4,20 +4,22 @@
 #include "GameObject.h"
 #include <functional>
 
-#define BALL_SIZE 15 //rect size
-#define BALL_SPEED 7 //ball speed settings, temporary here
-
 class Ball : public GameObject
 {
 public:
-	Ball(const LoaderParams* pParams, class PlayState* ps);
+	Ball(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean() {};
 
+	auto getSpeed() { return speed; }
+	void setSpeed(uint8_t val) { speed = val; }
+
+	auto getSpeedLimit() { return maxBallSpeed; }
+
 private:
-	void CollisionCheck();
-	class PlayState* playState;
+	uint8_t speed = 5;
+	uint8_t maxBallSpeed = 12;
 
 };
 #endif

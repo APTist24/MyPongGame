@@ -7,13 +7,15 @@ class Enemy : public GameObject
 {
 public:
 
-	Enemy(const LoaderParams* pParams);
+	Enemy(const LoaderParams* pParams, GameObject* ball_);
 	virtual void draw();
 	virtual void update();
 	virtual void clean() {};
 
 private:
-	void handleInput();
+	class Ball* ball;
+	void TryCatchBall();
+
 };
 
 #endif

@@ -22,10 +22,24 @@ void PlayState::update()
 	for (auto obj: gameObjects)
 		if(obj) obj->update();
 
-	if (checkCollision(enemy))
-		ball->getVelocity().setX(-BALL_SPEED);
-	if (checkCollision(player))
-		ball->getVelocity().setX(BALL_SPEED);
+	checkWallCollision();
+
+	if (checkCollision(enemy)) {
+		auto ballPtr = static_cast<Ball*>(ball);
+		auto ballSpeed = ballPtr->getSpeed();
+		auto maxBallSpeed = ballPtr->getSpeedLimit();
+		ball->getVelocity().setX(-ballSpeed);
+		if (ballSpeed < maxBallSpeed)
+			ballPtr->setSpeed(++ballSpeed);
+	}
+	if (checkCollision(player)) {
+		auto ballPtr = static_cast<Ball*>(ball);
+		auto ballSpeed = ballPtr->getSpeed();
+		auto maxBallSpeed = ballPtr->getSpeedLimit();
+		ball->getVelocity().setX(ballSpeed);
+		if (ballSpeed < maxBallSpeed)
+			ballPtr->setSpeed(++ballSpeed);
+	}
 
 }
 
@@ -53,11 +67,11 @@ bool PlayState::onEnter()
 	player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
 	gameObjects.push_back(player);
 
-	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"));
-	gameObjects.push_back(enemy);
-
-	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT /2, 15, 15, "ball"), this);
+	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT / 2, 15, 15, "ball"));
 	gameObjects.push_back(ball);
+
+	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"), ball);
+	gameObjects.push_back(enemy);
 
 	playerScore = new GameScore(new LoaderParams(WIDTH / 4, HEIGHT / 5, 50, 50, "player"));
 	gameObjects.push_back(playerScore);
@@ -79,7 +93,7 @@ bool PlayState::onExit()
 	return true;
 }
 
-bool PlayState::checkCollision(GameObject* obj) //with ball
+bool PlayState::checkCollision(GameObject* obj)
 {
 	int leftA, leftB;
 	int rightA, rightB;
@@ -98,16 +112,58 @@ bool PlayState::checkCollision(GameObject* obj) //with ball
 	bottomB = ball->getPosition().getY() + ball->getHeight();
 
 	//If any of the sides from A are outside of Ball
-	if (bottomA <= topB) { return false; }
-	if (topA >= bottomB) { return false; }
-	if (rightA <= leftB) { return false; }
-	if (leftA >= rightB) { return false; }
+	if (bottomA <= topB) 
+		return false; 
+	if (topA >= bottomB) 
+		return false;
+	if (rightA <= leftB) 
+		return false;
+	if (leftA >= rightB)  
+		return false; 
+
 	return true;
+}
+
+void PlayState::checkWallCollision()
+{
+	int leftB = ball->getPosition().getX();
+	int rightB = ball->getPosition().getX() + ball->getWidth();
+	int topB = ball->getPosition().getY();
+	int bottomB = ball->getPosition().getY() + ball->getHeight();
+
+	auto ballSpeed = static_cast<Ball*>(ball)->getSpeed();
+	//top
+	if (topB < 0)
+	{
+		ball->getVelocity().setY(ballSpeed);
+		return;
+	}
+	//bot
+	if (bottomB > HEIGHT)
+	{
+		ball->getVelocity().setY(-ballSpeed);
+		return;
+	}
+	//ai side
+	if (rightB > WIDTH)
+	{
+		ball->getVelocity().setX(-ballSpeed);
+		Goal(0);
+		return;
+	}
+	//player side
+	if (leftB < 0)
+	{
+		ball->getVelocity().setX(ballSpeed);
+		Goal(1);
+		return;
+	}
 }
 
 void PlayState::Goal(const uint8_t playerID)
 {
 	//playerID = 0, enemyID = 1
 	!playerID ? playerScore->IncreaseScore() : enemyScore->IncreaseScore();
+	//ball->resetPosition();
 }
 

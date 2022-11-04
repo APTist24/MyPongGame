@@ -26,19 +26,34 @@ public:
 		SDL_Texture* pTexture =
 			SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
-		// everything went ok, add the texture to our list
+
 		if (pTexture != nullptr)
 		{
 			textureMap[id] = pTexture;
 			return true;
 		}
-		// reaching here means something went wrong
+	    //something wrong if we here
 		return false;
 	}
 
 	void draw(std::string id, int x, int y, int
 		width, int height, SDL_Renderer* pRenderer,
-		SDL_RendererFlip flip);
+		SDL_RendererFlip flip)
+	{
+		SDL_Rect srcRect;
+		SDL_Rect destRect;
+
+		srcRect.x = 0;
+		srcRect.y = 0;
+		srcRect.w = destRect.w = width;
+		srcRect.h = destRect.h = height;
+
+		destRect.x = x;
+		destRect.y = y;
+
+		SDL_RenderCopyEx(pRenderer, textureMap[id], &srcRect,
+			&destRect, 0, 0, flip);
+	}
 
 	void drawFrame(std::string id, int x, int y, int
 		width, int height, int currentRow, int currentFrame, SDL_Renderer
@@ -61,7 +76,10 @@ public:
 
 	}
 
-	void clearFromTextureMap(std::string id);
+	void clearFromTextureMap(std::string id)
+	{
+			textureMap.erase(id);
+	}
 
 private:
 	TextureManager() {}

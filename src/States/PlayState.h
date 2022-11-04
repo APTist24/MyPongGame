@@ -12,8 +12,6 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	bool checkCollision(class GameObject* obj);
-
 	void Goal(const uint8_t playerID);
 
 	virtual std::string getStateID() const { return playID; }
@@ -27,6 +25,9 @@ private:
 	class GameObject* ball;
 	class GameScore* playerScore;
 	class GameScore* enemyScore;
+
+	bool checkCollision(class GameObject* obj);
+	void checkWallCollision();
 
 };
 

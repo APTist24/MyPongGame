@@ -39,6 +39,7 @@ private:
 
 	class SDL_Window* Window;
 	class SDL_Renderer* Renderer;
+	class _TTF_Font* Font;
 
 	GameStateMachine* StateManager;
 

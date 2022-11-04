@@ -17,9 +17,6 @@
     <ClCompile Include="src\GameObjects\GameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="src\TexturesManager\TextureManager.cpp">
-      <Filter>TextureManager</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameObjects\Player.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
@@ -43,6 +40,9 @@
     </ClCompile>
     <ClCompile Include="src\GameObjects\GameScore.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TexturesManager\TextureManager.cpp">
+      <Filter>TextureManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,5 +126,8 @@
     <Filter Include="TextureManager">
       <UniqueIdentifier>{736121b6-8ce4-480a-821b-ac14782ff8b6}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

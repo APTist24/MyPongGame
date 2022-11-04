@@ -6,8 +6,8 @@ class GameScore : public GameObject
 {
 public:
 	GameScore(const LoaderParams* pParams);
-	virtual void draw() {};
-	virtual void update() {};
+	virtual void draw();
+	virtual void update();
 	virtual void clean() {};
 
 	void IncreaseScore();

@@ -5,11 +5,11 @@
 #include "PlayState.h"
 
 
-Ball::Ball(const LoaderParams* pParams, PlayState* ps) :
-	GameObject(pParams), playState(ps)
+Ball::Ball(const LoaderParams* pParams) :
+	GameObject(pParams)
 {
-	velocity.setX(BALL_SPEED);
-	velocity.setY(BALL_SPEED);
+	velocity.setX(speed);
+	velocity.setY(speed);
 
 }
 
@@ -19,43 +19,10 @@ void Ball::draw() {
 
 void Ball::update() {
 
-	CollisionCheck();
-
 	currentFrame = 0;
 
 	GameObject::update();
 }
 
-//MOVE IT TO PLAYSTATE
-void Ball::CollisionCheck()
-{
-	//top
-	if (position.getY() < 0)
-	{
-		velocity.setY(BALL_SPEED);
-		return;
-	}
-	//bot
-	if (position.getY() + BALL_SIZE > HEIGHT)
-	{
-		velocity.setY(-BALL_SPEED);
-		return;
-	}
-	//ai side
-	if (position.getX()  + BALL_SIZE > WIDTH)
-	{
-		velocity.setX(-BALL_SPEED);
-		playState->Goal(0);
-		return;
-	}
-	//player side
-	if (position.getX()  < 0)
-	{
-		velocity.setX(BALL_SPEED);
-		playState->Goal(1);
-		return;
-	}
-
-}
 
 //need reset function after goal

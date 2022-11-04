@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "SDL.h"
+#include <SDL_ttf.h>
 #include <iostream>
 
 #include "InputHandler.h"
@@ -21,27 +22,34 @@ bool Game::init(const char* title, int width,
 	if (fullscreen)
 		flags = SDL_WINDOW_FULLSCREEN;
 
-	// initialize the SDL2 framework along with systems.
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
-		std::cerr << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+		std::cerr << "Unable to init SDL: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
-	// try to create a new window for the application.
 	Window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
 	if (!Window) {
-		std::cerr << "Unable to create SDL window: " << SDL_GetError() << std::endl;
+		std::cerr << "Unable to create window: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
-	// try to create a new renderer for the application window.
 	Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!Renderer) {
-		std::cerr << "Unable to create SDL renderer: " << SDL_GetError() << std::endl;
+		std::cerr << "Unable to create renderer: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
-	isRunning = true; // everything inited successfully, start the main loop
+	if (TTF_Init() == -1)
+	{
+		std::cerr << "Unable to init TTF: " << TTF_GetError() << std::endl;
+	}
+
+	Font = TTF_OpenFont("C:/Windows/Fonts/arial.ttf", 28);
+	if (!Font) {
+		std::cerr << "Unable to open font: " << TTF_GetError() << std::endl;
+	}
+
+	isRunning = true; //main loop boolean, if false, stop game loop
 
 	StateManager = new GameStateMachine();
 	StateManager->changeState(new MenuState());
@@ -71,6 +79,8 @@ void Game::handleEvents()
 
 void Game::clean()
 {
+	TTF_CloseFont(Font);
+	TTF_Quit();
 	SDL_DestroyWindow(Window);
 	SDL_DestroyRenderer(Renderer);
 	SDL_Quit();
