@@ -29,9 +29,9 @@ public:
 
 	bool running() { return isRunning; }
 
-	class SDL_Renderer* getRenderer() { return Renderer; }
+	struct SDL_Renderer* getRenderer() { return Renderer; }
 
-	class _TTF_Font* getFont() { return Font; }
+	struct _TTF_Font* getFont() { return Font; }
 
 	GameStateMachine* getStateMachine() { return StateManager; }
 
@@ -40,9 +40,9 @@ private:
 
 	bool isRunning;
 
-	class SDL_Window* Window;
-	class SDL_Renderer* Renderer;
-	class _TTF_Font* Font;
+	struct SDL_Window* Window;
+	struct SDL_Renderer* Renderer;
+	struct _TTF_Font* Font;
 
 	GameStateMachine* StateManager;
 

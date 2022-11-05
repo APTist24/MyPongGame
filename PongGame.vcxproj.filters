@@ -14,9 +14,6 @@
     <ClCompile Include="src\InputHandler\InputHandler.cpp">
       <Filter>InputHandler</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObjects\GameObject.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameObjects\Player.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
@@ -43,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="src\TexturesManager\TextureManager.cpp">
       <Filter>TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\Base\GameObject.cpp">
+      <Filter>GameObjects\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\ScoreText.cpp">
+      <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,15 +79,6 @@
     <ClInclude Include="src\LibExt\Vector2D.h">
       <Filter>LibExt</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObjects\GameObject.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\IGameObject.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\LoaderParams.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="src\TexturesManager\TextureManager.h">
       <Filter>TextureManager</Filter>
     </ClInclude>
@@ -101,6 +95,18 @@
       <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\GameScore.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Base\GameObject.h">
+      <Filter>GameObjects\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Base\IGameObject.h">
+      <Filter>GameObjects\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\Base\LoaderParams.h">
+      <Filter>GameObjects\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\ScoreText.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,6 +131,9 @@
     </Filter>
     <Filter Include="TextureManager">
       <UniqueIdentifier>{736121b6-8ce4-480a-821b-ac14782ff8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Base">
+      <UniqueIdentifier>{556c7f7f-4993-437b-89da-ea1f47474984}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

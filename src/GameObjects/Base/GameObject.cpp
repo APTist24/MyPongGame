@@ -5,12 +5,12 @@
 GameObject::GameObject(const LoaderParams* pParams) :
 													IGameObject(pParams),
 													position(pParams->getX(),
-													pParams->getY()),
+															pParams->getY()),
+													width(pParams->getWidth()),
+													height(pParams->getHeight()),
 													velocity(0, 0),
 													acceleration(0, 0)
 {
-	width = pParams->getWidth();
-	height = pParams->getHeight();
 	textureID = pParams->getTextureID();
 	currentRow = 1;
 	currentFrame = 1;

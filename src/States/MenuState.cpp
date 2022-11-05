@@ -1,6 +1,5 @@
 #include "MenuState.h"
 #include "GameObject.h"
-#include "Game.h"
 #include "TextureManager.h"
 #include "MenuButton.h"
 #include "GameSettings.h"
@@ -23,12 +22,12 @@ void MenuState::render()
 bool MenuState::onEnter()
 {
 	if (!TextureManager::Instance()->load("imgs/start.png",
-		"playbutton", Game::Instance()->getRenderer()))
+		"playbutton"))
 	{
 		return false;
 	}
 	if (!TextureManager::Instance()->load("imgs/exit.png",
-		"exitbutton", Game::Instance()->getRenderer()))
+		"exitbutton"))
 	{
 		return false;
 	}

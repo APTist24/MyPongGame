@@ -18,30 +18,30 @@ public:
 
 	static TextureManager* Instance();
 
-	bool load(std::string fileName, std::string
-		id, SDL_Renderer* pRenderer)
+	bool load(std::string fileName, std::string id)
 	{
 		SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
-		if (pTempSurface == nullptr)
+		if (!pTempSurface)
 		{
+			std::cerr << "Unable to create a surface "  << std::endl;
 			return false;
 		}
 		SDL_Texture* pTexture =
-			SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+			SDL_CreateTextureFromSurface(Game::Instance()->getRenderer(), pTempSurface);
 		SDL_FreeSurface(pTempSurface);
 
-		if (pTexture != nullptr)
+		if (pTexture)
 		{
 			textureMap[id] = pTexture;
 			return true;
 		}
 	    //something wrong if we here
+		std::cerr << "Unable to create texture from a surface: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
-	SDL_Texture* createTextureFromText(const std::string& text)
+	SDL_Texture* createTextureFromText(std::string text)
 	{
-		// create a surface which contains the desired text.
 		SDL_Color color{ 0xff, 0xff, 0xff, 0xff };
 		auto surface = TTF_RenderText_Blended(Game::Instance()->getFont(), text.c_str(), color);
 		if (!surface) {
@@ -52,11 +52,10 @@ public:
 		// create a texture from the text surface.
 		auto texture = SDL_CreateTextureFromSurface(Game::Instance()->getRenderer(), surface);
 		SDL_FreeSurface(surface);
-		if (texture == nullptr) {
+		if (!texture) {
 			std::cerr << "Unable to create texture from a text surface: " << SDL_GetError() << std::endl;
 			return nullptr;
 		}
-
 		return texture;
 	}
 

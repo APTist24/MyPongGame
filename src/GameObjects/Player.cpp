@@ -4,7 +4,7 @@
 #include "GameSettings.h"
 
 Player::Player(const LoaderParams* pParams) :
-	GameObject(pParams)
+								GameObject(pParams)
 {
 }
 

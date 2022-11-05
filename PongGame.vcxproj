@@ -20,11 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameObjects\Ball.cpp" />
+    <ClCompile Include="src\GameObjects\Base\GameObject.cpp" />
     <ClCompile Include="src\GameObjects\Enemy.cpp" />
-    <ClCompile Include="src\GameObjects\GameObject.cpp" />
     <ClCompile Include="src\GameObjects\GameScore.cpp" />
     <ClCompile Include="src\GameObjects\MenuButton.cpp" />
     <ClCompile Include="src\GameObjects\Player.cpp" />
+    <ClCompile Include="src\GameObjects\ScoreText.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\InputHandler\InputHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -37,13 +38,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameObjects\Ball.h" />
+    <ClInclude Include="src\GameObjects\Base\GameObject.h" />
+    <ClInclude Include="src\GameObjects\Base\IGameObject.h" />
+    <ClInclude Include="src\GameObjects\Base\LoaderParams.h" />
     <ClInclude Include="src\GameObjects\Enemy.h" />
-    <ClInclude Include="src\GameObjects\GameObject.h" />
     <ClInclude Include="src\GameObjects\GameScore.h" />
-    <ClInclude Include="src\GameObjects\IGameObject.h" />
-    <ClInclude Include="src\GameObjects\LoaderParams.h" />
     <ClInclude Include="src\GameObjects\MenuButton.h" />
     <ClInclude Include="src\GameObjects\Player.h" />
+    <ClInclude Include="src\GameObjects\ScoreText.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\GameSettings.h" />
     <ClInclude Include="src\InputHandler\InputHandler.h" />
@@ -115,7 +117,7 @@
     <IncludePath>C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;C:\src\PongGame\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\imgs;$(ProjectDir)\src\GameObjects;$(ProjectDir)\src\TexturesManager;$(ProjectDir)\src\LibExt;$(ProjectDir)\src\InputHandler;$(ProjectDir)\src\StatesManager;$(ProjectDir)\src\States;$(ProjectDir)\src\Game;$(IncludePath)</IncludePath>
+    <IncludePath>C:\src\PongGame\src\GameObjects\Base;$(ProjectDir)\imgs;$(ProjectDir)\src\GameObjects;$(ProjectDir)\src\TexturesManager;$(ProjectDir)\src\LibExt;$(ProjectDir)\src\InputHandler;$(ProjectDir)\src\StatesManager;$(ProjectDir)\src\States;$(ProjectDir)\src\Game;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

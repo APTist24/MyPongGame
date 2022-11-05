@@ -8,9 +8,7 @@
 Ball::Ball(const LoaderParams* pParams) :
 	GameObject(pParams)
 {
-	velocity.setX(speed);
-	velocity.setY(speed);
-
+	resetPosition();
 }
 
 void Ball::draw() {
@@ -24,5 +22,11 @@ void Ball::update() {
 	GameObject::update();
 }
 
-
-//need reset function after goal
+void Ball::resetPosition()
+{
+	speed = startupSpeed;
+	velocity.setX(speed);
+	velocity.setY(speed);
+	position.setX(HEIGHT / 2);
+	position.setY(WIDTH / 2);
+}

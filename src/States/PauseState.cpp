@@ -1,5 +1,4 @@
 #include "PauseState.h"
-#include "Game.h"
 #include "MenuState.h"
 #include "TextureManager.h"
 #include "MenuButton.h"
@@ -33,12 +32,12 @@ void PauseState::render()
 
 bool PauseState::onEnter()
 {
-	if (!TextureManager::Instance()->load("imgs/resume.png", "resumebutton", Game::Instance()->getRenderer()))
+	if (!TextureManager::Instance()->load("imgs/resume.png", "resumebutton"))
 	{
 		return false;
 	}
 
-	if (!TextureManager::Instance()->load("imgs/mainmenu.png", "mainbutton", Game::Instance()->getRenderer()))
+	if (!TextureManager::Instance()->load("imgs/mainmenu.png", "mainbutton" ))
 	{
 		return false;
 	}

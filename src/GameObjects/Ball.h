@@ -1,7 +1,7 @@
 #ifndef __Ball__
 #define __Ball__
 
-#include "GameObject.h"
+#include "GameOBject.h"
 #include <functional>
 
 class Ball : public GameObject
@@ -17,8 +17,11 @@ public:
 
 	auto getSpeedLimit() { return maxBallSpeed; }
 
+	void resetPosition();
+
 private:
-	uint8_t speed = 5;
+	uint8_t speed;
+	uint8_t startupSpeed = 5;
 	uint8_t maxBallSpeed = 12;
 
 };

@@ -1,7 +1,6 @@
 #include "PlayState.h"
 #include "GameObject.h"
 #include "TextureManager.h"
-#include "Game.h"
 #include "InputHandler.h"
 #include "PauseState.h"
 #include "Player.h"
@@ -9,6 +8,7 @@
 #include "Ball.h"
 #include "GameScore.h"
 #include "GameSettings.h"
+#include "ScoreText.h"
 
 const std::string PlayState::playID = "PLAY";
 
@@ -24,11 +24,13 @@ void PlayState::update()
 
 	checkWallCollision();
 
+	auto ball_ = static_cast<Ball*>(ball);
+
 	if (checkCollision(enemy)) {
 		auto ballPtr = static_cast<Ball*>(ball);
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
-		ball->getVelocity().setX(-ballSpeed);
+		ball_->getVelocity().setX(-ballSpeed);
 		if (ballSpeed < maxBallSpeed)
 			ballPtr->setSpeed(++ballSpeed);
 	}
@@ -36,7 +38,7 @@ void PlayState::update()
 		auto ballPtr = static_cast<Ball*>(ball);
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
-		ball->getVelocity().setX(ballSpeed);
+		ball_->getVelocity().setX(ballSpeed);
 		if (ballSpeed < maxBallSpeed)
 			ballPtr->setSpeed(++ballSpeed);
 	}
@@ -53,13 +55,13 @@ void PlayState::render()
 bool PlayState::onEnter()
 {
 	if (!TextureManager::Instance()->load("imgs/player.png",
-		"player", Game::Instance()->getRenderer()))
+		"player"))
 	{
 		return false;
 	}
 
 	if (!TextureManager::Instance()->load("imgs/ball.png",
-		"ball", Game::Instance()->getRenderer()))
+		"ball"))
 	{
 		return false;
 	}
@@ -67,16 +69,19 @@ bool PlayState::onEnter()
 	player = new Player(new LoaderParams(0, 100, 25, 150, "player"));
 	gameObjects.push_back(player);
 
-	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT / 2, 15, 15, "ball"));
+	ball = new Ball(new LoaderParams(WIDTH / 2, HEIGHT / 2, 25, 25, "ball"));
 	gameObjects.push_back(ball);
 
 	enemy = new Enemy(new LoaderParams(WIDTH - 25, 100, 25, 150, "player"), ball);
 	gameObjects.push_back(enemy);
 
-	playerScore = new GameScore(new LoaderParams(WIDTH / 4, HEIGHT / 5, 50, 50, ""), { (WIDTH / 2) - 25,5,0,0});
+	auto scoreText = new ScoreText(new LoaderParams((WIDTH / 2) - 50, 5, 0, 0, ""), "Score :");
+	gameObjects.push_back(scoreText);
+
+	playerScore = new GameScore(new LoaderParams((WIDTH / 2) - 50, 50, 0, 0, ""));
 	gameObjects.push_back(playerScore);
 
-	enemyScore = new GameScore(new LoaderParams((WIDTH/ 2) + WIDTH / 4, HEIGHT / 5, 50, 50, ""), { (WIDTH /2) + 25, 5,0,0 });
+	enemyScore = new GameScore(new LoaderParams((WIDTH / 2) + 50, 50, 0, 0, ""));
 	gameObjects.push_back(enemyScore);
 
 	return true;
@@ -131,30 +136,31 @@ void PlayState::checkWallCollision()
 	int topB = ball->getPosition().getY();
 	int bottomB = ball->getPosition().getY() + ball->getHeight();
 
-	auto ballSpeed = static_cast<Ball*>(ball)->getSpeed();
+	auto ball_ = static_cast<Ball*>(ball);
+	auto ballSpeed = ball_->getSpeed();
 	//top
 	if (topB < 0)
 	{
-		ball->getVelocity().setY(ballSpeed);
+		ball_->getVelocity().setY(ballSpeed);
 		return;
 	}
 	//bot
 	if (bottomB > HEIGHT)
 	{
-		ball->getVelocity().setY(-ballSpeed);
+		ball_->getVelocity().setY(-ballSpeed);
 		return;
 	}
 	//ai side
 	if (rightB > WIDTH)
 	{
-		ball->getVelocity().setX(-ballSpeed);
+		ball_->getVelocity().setX(-ballSpeed);
 		Goal(0);
 		return;
 	}
 	//player side
 	if (leftB < 0)
 	{
-		ball->getVelocity().setX(ballSpeed);
+		ball_->getVelocity().setX(ballSpeed);
 		Goal(1);
 		return;
 	}
@@ -162,8 +168,8 @@ void PlayState::checkWallCollision()
 
 void PlayState::Goal(const uint8_t playerID)
 {
+	static_cast<Ball*>(ball)->resetPosition();
 	//playerID = 0, enemyID = 1
 	!playerID ? playerScore->IncreaseScore() : enemyScore->IncreaseScore();
-	//ball->resetPosition();
 }
 

@@ -6,7 +6,7 @@
 class GameScore : public GameObject
 {
 public:
-	GameScore(const LoaderParams* pParams, SDL_Rect rect_);
+	GameScore(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean() {};
@@ -16,7 +16,7 @@ public:
 private:
 	uint8_t score = 0;
 
-	class SDL_Texture* scoreTexture;
+	struct SDL_Texture* scoreTexture;
 	SDL_Rect rect;
 };
 #endif
