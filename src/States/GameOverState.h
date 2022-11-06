@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include <vector>
+#include <SDL_mixer.h>
 
 class GameOverState : public GameState
 {
@@ -23,6 +24,10 @@ private:
 	static const std::string gameOverID;
 	std::vector<class GameObject*> gameObjects;
 	uint8_t playerID;
+
+	Mix_Music* enterMus;
+
+
 
 };
 

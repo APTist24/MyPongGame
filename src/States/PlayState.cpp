@@ -102,8 +102,8 @@ bool PlayState::onExit()
 
 	gameObjects.clear();
 
-//	delete goalMus;
-//	delete rocketMus;
+	Mix_FreeMusic(goalMus);
+	Mix_FreeMusic(rocketMus);
 
 	return true;
 }

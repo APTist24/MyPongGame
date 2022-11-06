@@ -44,9 +44,9 @@ bool GameOverState::onEnter()
 														"Game Over! " + playerID ? "Computer win, try again!" : "You win!");
 	gameObjects.push_back(gameOverTextText);
 
-
-
-	//ADD TEXT WHO WIN
+	enterMus = Mix_LoadMUS("music/game_over.wav");
+	if (!enterMus) std::cerr << "Can't load music" << std::endl;
+	Mix_PlayMusic(enterMus, false);
 
 	return true;
 }
@@ -57,6 +57,8 @@ bool GameOverState::onExit()
 		if (obj) obj->clean();
 
 	gameObjects.clear();
+
+	Mix_FreeMusic(enterMus);
 
 	TextureManager::Instance()->clearFromTextureMap("playbutton");
 
