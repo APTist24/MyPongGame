@@ -22,6 +22,7 @@
     <ClCompile Include="src\GameObjects\Ball.cpp" />
     <ClCompile Include="src\GameObjects\Base\GameObject.cpp" />
     <ClCompile Include="src\GameObjects\Enemy.cpp" />
+    <ClCompile Include="src\GameObjects\GameOverTexture.cpp" />
     <ClCompile Include="src\GameObjects\GameScore.cpp" />
     <ClCompile Include="src\GameObjects\MenuButton.cpp" />
     <ClCompile Include="src\GameObjects\Player.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="src\GameObjects\Base\IGameObject.h" />
     <ClInclude Include="src\GameObjects\Base\LoaderParams.h" />
     <ClInclude Include="src\GameObjects\Enemy.h" />
+    <ClInclude Include="src\GameObjects\GameOverTexture.h" />
     <ClInclude Include="src\GameObjects\GameScore.h" />
     <ClInclude Include="src\GameObjects\MenuButton.h" />
     <ClInclude Include="src\GameObjects\Player.h" />
@@ -117,7 +119,7 @@
     <IncludePath>C:\src\PongGame\src\StatesManager;C:\src\PongGame\src\States;C:\src\PongGame\src\Game;C:\src\PongGame\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\src\PongGame\src\GameObjects\Base;$(ProjectDir)\imgs;$(ProjectDir)\src\GameObjects;$(ProjectDir)\src\TexturesManager;$(ProjectDir)\src\LibExt;$(ProjectDir)\src\InputHandler;$(ProjectDir)\src\StatesManager;$(ProjectDir)\src\States;$(ProjectDir)\src\Game;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\music;$(ProjectDir)\src\GameObjects\Base;$(ProjectDir)\imgs;$(ProjectDir)\src\GameObjects;$(ProjectDir)\src\TexturesManager;$(ProjectDir)\src\LibExt;$(ProjectDir)\src\InputHandler;$(ProjectDir)\src\StatesManager;$(ProjectDir)\src\States;$(ProjectDir)\src\Game;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -185,6 +187,9 @@
     <Import Project="packages\sdl2.nuget.2.0.22\build\native\sdl2.nuget.targets" Condition="Exists('packages\sdl2.nuget.2.0.22\build\native\sdl2.nuget.targets')" />
     <Import Project="packages\sdl2_ttf.nuget.redist.2.20.0\build\native\sdl2_ttf.nuget.redist.targets" Condition="Exists('packages\sdl2_ttf.nuget.redist.2.20.0\build\native\sdl2_ttf.nuget.redist.targets')" />
     <Import Project="packages\sdl2_ttf.nuget.2.20.0\build\native\sdl2_ttf.nuget.targets" Condition="Exists('packages\sdl2_ttf.nuget.2.20.0\build\native\sdl2_ttf.nuget.targets')" />
+    <Import Project="packages\vii.SDL2_mixer.redist.2.0.2\build\native\vii.SDL2_mixer.redist.targets" Condition="Exists('packages\vii.SDL2_mixer.redist.2.0.2\build\native\vii.SDL2_mixer.redist.targets')" />
+    <Import Project="packages\sdl2_mixer.nuget.redist.2.6.1\build\native\sdl2_mixer.nuget.redist.targets" Condition="Exists('packages\sdl2_mixer.nuget.redist.2.6.1\build\native\sdl2_mixer.nuget.redist.targets')" />
+    <Import Project="packages\sdl2_mixer.nuget.2.6.1\build\native\sdl2_mixer.nuget.targets" Condition="Exists('packages\sdl2_mixer.nuget.2.6.1\build\native\sdl2_mixer.nuget.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -198,5 +203,8 @@
     <Error Condition="!Exists('packages\sdl2.nuget.2.0.22\build\native\sdl2.nuget.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2.nuget.2.0.22\build\native\sdl2.nuget.targets'))" />
     <Error Condition="!Exists('packages\sdl2_ttf.nuget.redist.2.20.0\build\native\sdl2_ttf.nuget.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_ttf.nuget.redist.2.20.0\build\native\sdl2_ttf.nuget.redist.targets'))" />
     <Error Condition="!Exists('packages\sdl2_ttf.nuget.2.20.0\build\native\sdl2_ttf.nuget.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_ttf.nuget.2.20.0\build\native\sdl2_ttf.nuget.targets'))" />
+    <Error Condition="!Exists('packages\vii.SDL2_mixer.redist.2.0.2\build\native\vii.SDL2_mixer.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\vii.SDL2_mixer.redist.2.0.2\build\native\vii.SDL2_mixer.redist.targets'))" />
+    <Error Condition="!Exists('packages\sdl2_mixer.nuget.redist.2.6.1\build\native\sdl2_mixer.nuget.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_mixer.nuget.redist.2.6.1\build\native\sdl2_mixer.nuget.redist.targets'))" />
+    <Error Condition="!Exists('packages\sdl2_mixer.nuget.2.6.1\build\native\sdl2_mixer.nuget.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_mixer.nuget.2.6.1\build\native\sdl2_mixer.nuget.targets'))" />
   </Target>
 </Project>

@@ -1,15 +1,14 @@
-#ifndef __ScoreText__
-#define __ScoreText__
+#ifndef __GameOverTexture__
+#define __GameOverTexture__
 
 #include "GameObject.h"
 #include "SDL.h"
 
-class ScoreText : public GameObject
+class GameOverTexture : public GameObject
 {
 public:
-	ScoreText(const LoaderParams* pParams, const std::string& text);
+	GameOverTexture(const LoaderParams* pParams, const std::string& text);
 
-	virtual void update() {};
 	virtual void draw();
 	virtual void clean() { SDL_DestroyTexture(sdlTexture); }
 private:

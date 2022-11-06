@@ -5,6 +5,7 @@
 #include "GameSettings.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "GameOverTexture.h"
 
 const std::string GameOverState::gameOverID = "GAMEOVER";
 
@@ -30,23 +31,20 @@ void GameOverState::render()
 
 bool GameOverState::onEnter()
 {
-	if (!TextureManager::Instance()->load("imgs/start.png",
-		"playbutton"))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("imgs/exit.png",
-		"exitbutton"))
+	if (!TextureManager::Instance()->load("imgs/play_again.png",
+		"playagain"))
 	{
 		return false;
 	}
 	GameObject* button1 = new MenuButton(new LoaderParams(HEIGHT / 2, WIDTH / 2 - 50,
-		135, 35, "playbutton"), &onPlayPress);
+		135, 35, "playagain"), &onPlayPress);
 	gameObjects.push_back(button1);
 
-	GameObject* button2 = new MenuButton(new LoaderParams(HEIGHT / 2, WIDTH / 2,
-		135, 35, "exitbutton"), &onMenuPress);
-	gameObjects.push_back(button2);
+	GameObject* gameOverTextText = new GameOverTexture(new LoaderParams(playerID? (WIDTH / 4) : (WIDTH / 3), HEIGHT / 3, 0, 0, ""),
+														"Game Over! " + playerID ? "Computer win, try again!" : "You win!");
+	gameObjects.push_back(gameOverTextText);
+
+
 
 	//ADD TEXT WHO WIN
 
@@ -55,13 +53,12 @@ bool GameOverState::onEnter()
 
 bool GameOverState::onExit()
 {
-	for (auto obj : gameObjects)
+	for (auto& obj : gameObjects)
 		if (obj) obj->clean();
 
 	gameObjects.clear();
 
 	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
 
 	return true;
 }
@@ -69,10 +66,5 @@ bool GameOverState::onExit()
 void GameOverState::onPlayPress()
 {
 	Game::Instance()->getStateMachine()->changeState(new PlayState());
-}
-
-void GameOverState::onMenuPress()
-{
-	Game::Instance()->getStateMachine()->changeState(new MenuState());
 }
 

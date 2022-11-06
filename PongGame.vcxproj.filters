@@ -47,6 +47,9 @@
     <ClCompile Include="src\GameObjects\ScoreText.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObjects\GameOverTexture.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -107,6 +110,9 @@
       <Filter>GameObjects\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\ScoreText.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\GameOverTexture.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -106,7 +106,6 @@ public:
 
 private:
 	TextureManager() {}
-
 	std::map<std::string, SDL_Texture*> textureMap;
 
 	static TextureManager* s_pInstance;

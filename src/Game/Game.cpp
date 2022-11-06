@@ -5,6 +5,7 @@
 
 #include "InputHandler.h"
 #include "MenuState.h"
+#include <SDL_mixer.h>
 
 Game* Game::instance = nullptr;
 
@@ -48,6 +49,8 @@ bool Game::init(const char* title, int width,
 	if (!Font) {
 		std::cerr << "Unable to open font: " << TTF_GetError() << std::endl;
 	}
+
+	Mix_OpenAudio(22050, AUDIO_S16, 2, 4096);
 
 	isRunning = true; //main loop boolean, if false, stop game loop
 

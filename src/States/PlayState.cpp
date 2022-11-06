@@ -25,7 +25,7 @@ void PlayState::update()
 	auto ballPtr = static_cast<Ball*>(ball);
 
 	if (checkCollision(enemy)) {
-
+		Mix_PlayMusic(rocketMus, false);
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
 		ballPtr->getVelocity().setX(-ballSpeed);
@@ -33,7 +33,7 @@ void PlayState::update()
 			ballPtr->setSpeed(++ballSpeed);
 	}
 	if (checkCollision(player)) {
-
+		Mix_PlayMusic(rocketMus, false);
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
 		ballPtr->getVelocity().setX(ballSpeed);
@@ -84,6 +84,13 @@ bool PlayState::onEnter()
 	enemyScore = new GameScore(new LoaderParams((WIDTH / 2) + 50, 50, 0, 0, ""));
 	gameObjects.push_back(enemyScore);
 
+	goalMus = Mix_LoadMUS("music/goal.wav");
+	if (!goalMus) std::cerr << "Can't load music" << std::endl;
+
+	rocketMus = Mix_LoadMUS("music/rocket_sound.wav");
+	if (!rocketMus) std::cerr << "Can't load music" << std::endl;
+
+
 	return true;
 }
 
@@ -94,6 +101,9 @@ bool PlayState::onExit()
 		if(obj) obj->clean();
 
 	gameObjects.clear();
+
+//	delete goalMus;
+//	delete rocketMus;
 
 	return true;
 }
@@ -129,7 +139,7 @@ bool PlayState::checkCollision(GameObject* obj)
 	return true;
 }
 
-bool PlayState::checkWallCollision()
+void PlayState::checkWallCollision()
 {
 	int leftB = ball->getPosition().getX();
 	int rightB = ball->getPosition().getX() + ball->getWidth();
@@ -142,27 +152,29 @@ bool PlayState::checkWallCollision()
 	if (topB < 0)
 	{
 		ball_->getVelocity().setY(ballSpeed);
-		return true;
+		return;
 	}
 	//bot
 	if (bottomB > HEIGHT)
 	{
 		ball_->getVelocity().setY(-ballSpeed);
-		return true;
+		return;
 	}
 	//ai side
 	if (rightB > WIDTH)
 	{
 		ball_->getVelocity().setX(-ballSpeed);
+		Mix_PlayMusic(goalMus, false);
 		Goal(0);
-		return true;
+		return;
 	}
 	//player side
 	if (leftB < 0)
 	{
 		ball_->getVelocity().setX(ballSpeed);
+		Mix_PlayMusic(goalMus, false);
 		Goal(1);
-		return true;
+		return;
 	}
 }
 

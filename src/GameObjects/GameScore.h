@@ -8,7 +8,7 @@ class GameScore : public GameObject
 public:
 	GameScore(const LoaderParams* pParams);
 	virtual void draw();
-	virtual void clean() {};
+	virtual void clean() { SDL_DestroyTexture(scoreTexture); };
 
 	void IncreaseScore(const uint8_t playerID = 0);
 

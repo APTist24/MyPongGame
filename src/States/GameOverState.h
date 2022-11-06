@@ -18,7 +18,6 @@ public:
 
 private:
 
-	static void onMenuPress();
 	static void onPlayPress();
 
 	static const std::string gameOverID;

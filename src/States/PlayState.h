@@ -3,7 +3,7 @@
 
 #include "GameState.h"
 #include <vector>
-#include <memory>
+#include <SDL_mixer.h>
 
 class PlayState : public GameState
 {
@@ -28,7 +28,11 @@ private:
 	class GameScore* enemyScore;
 
 	bool checkCollision(class GameObject* obj);
-	bool checkWallCollision();
+	void checkWallCollision();
+
+	Mix_Music* goalMus;
+	Mix_Music* rocketMus;
+	
 
 };
 
