@@ -17,14 +17,10 @@ void GameScore::draw()
 
 }
 
-void GameScore::update() 
-{
-
-};
-
-void GameScore::IncreaseScore()
+void GameScore::IncreaseScore(const uint8_t playerID)
 {
 	++score;
-	if (score > 9) Game::Instance()->getStateMachine()->changeState(new GameOverState());
+	if (score > 9)
+		Game::Instance()->getStateMachine()->changeState(new GameOverState(playerID));
 	else scoreTexture = TextureManager::Instance()->createTextureFromText(std::to_string(score));
 }

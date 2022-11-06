@@ -5,7 +5,7 @@
 #include "Ball.h"
 
 Enemy::Enemy(const LoaderParams* pParams, GameObject* ball_) :
-										GameObject(pParams), ball(static_cast<Ball*>(ball_))
+										GameObject(pParams), ball(ball_)
 {
 }
 

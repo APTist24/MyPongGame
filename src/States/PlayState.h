@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include <vector>
+#include <memory>
 
 class PlayState : public GameState
 {
@@ -27,7 +28,7 @@ private:
 	class GameScore* enemyScore;
 
 	bool checkCollision(class GameObject* obj);
-	void checkWallCollision();
+	bool checkWallCollision();
 
 };
 

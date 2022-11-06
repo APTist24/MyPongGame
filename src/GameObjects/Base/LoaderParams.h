@@ -13,13 +13,13 @@ public:
 											 m_textureID(textureID) 
 	{}
 
-	int getX() const { return x; }
-	int getY() const { return y; }
+	const int& getX() const { return x; }
+	const int& getY() const { return y; }
 
-	int getWidth() const { return width; }
-	int getHeight() const { return height; }
+	const int& getWidth() const { return width; }
+	const int& getHeight() const { return height; }
 
-	std::string getTextureID() const { return m_textureID; }
+	const std::string& getTextureID() const { return m_textureID; }
 
 private:
 	int x;

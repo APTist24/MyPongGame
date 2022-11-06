@@ -22,11 +22,18 @@ void Ball::update() {
 	GameObject::update();
 }
 
-void Ball::resetPosition()
+void Ball::resetPosition(const uint8_t i)
 {
 	speed = startupSpeed;
-	velocity.setX(speed);
-	velocity.setY(speed);
-	position.setX(HEIGHT / 2);
-	position.setY(WIDTH / 2);
+	//if
+	if (i) {
+		velocity.setX(speed);
+		velocity.setY(speed);
+	}
+	else {
+		velocity.setX(-speed);
+		velocity.setY(-speed);
+	}
+	position.setX(WIDTH / 2);
+	position.setY(HEIGHT / 2);
 }

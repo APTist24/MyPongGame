@@ -22,26 +22,26 @@ void PlayState::update()
 	for (auto obj: gameObjects)
 		if(obj) obj->update();
 
-	checkWallCollision();
-
-	auto ball_ = static_cast<Ball*>(ball);
+	auto ballPtr = static_cast<Ball*>(ball);
 
 	if (checkCollision(enemy)) {
-		auto ballPtr = static_cast<Ball*>(ball);
+
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
-		ball_->getVelocity().setX(-ballSpeed);
+		ballPtr->getVelocity().setX(-ballSpeed);
 		if (ballSpeed < maxBallSpeed)
 			ballPtr->setSpeed(++ballSpeed);
 	}
 	if (checkCollision(player)) {
-		auto ballPtr = static_cast<Ball*>(ball);
+
 		auto ballSpeed = ballPtr->getSpeed();
 		auto maxBallSpeed = ballPtr->getSpeedLimit();
-		ball_->getVelocity().setX(ballSpeed);
+		ballPtr->getVelocity().setX(ballSpeed);
 		if (ballSpeed < maxBallSpeed)
 			ballPtr->setSpeed(++ballSpeed);
 	}
+
+	checkWallCollision();
 
 }
 
@@ -129,7 +129,7 @@ bool PlayState::checkCollision(GameObject* obj)
 	return true;
 }
 
-void PlayState::checkWallCollision()
+bool PlayState::checkWallCollision()
 {
 	int leftB = ball->getPosition().getX();
 	int rightB = ball->getPosition().getX() + ball->getWidth();
@@ -142,34 +142,34 @@ void PlayState::checkWallCollision()
 	if (topB < 0)
 	{
 		ball_->getVelocity().setY(ballSpeed);
-		return;
+		return true;
 	}
 	//bot
 	if (bottomB > HEIGHT)
 	{
 		ball_->getVelocity().setY(-ballSpeed);
-		return;
+		return true;
 	}
 	//ai side
 	if (rightB > WIDTH)
 	{
 		ball_->getVelocity().setX(-ballSpeed);
 		Goal(0);
-		return;
+		return true;
 	}
 	//player side
 	if (leftB < 0)
 	{
 		ball_->getVelocity().setX(ballSpeed);
 		Goal(1);
-		return;
+		return true;
 	}
 }
 
 void PlayState::Goal(const uint8_t playerID)
 {
-	static_cast<Ball*>(ball)->resetPosition();
+	static_cast<Ball*>(ball)->resetPosition(playerID);
 	//playerID = 0, enemyID = 1
-	!playerID ? playerScore->IncreaseScore() : enemyScore->IncreaseScore();
+	!playerID ? playerScore->IncreaseScore(0) : enemyScore->IncreaseScore(1);
 }
 

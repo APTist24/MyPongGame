@@ -17,7 +17,7 @@ public:
 
 	auto getSpeedLimit() { return maxBallSpeed; }
 
-	void resetPosition();
+	void resetPosition(const uint8_t i = 0);
 
 private:
 	uint8_t speed;

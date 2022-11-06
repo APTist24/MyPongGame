@@ -3,18 +3,18 @@
 
 void GameStateMachine::pushState(GameState* pState)
 {
-	vec_gameStates.push_back(pState);
-	vec_gameStates.back()->onEnter();
+	vec_gameStates.push(pState);
+	vec_gameStates.top()->onEnter();
 }
 
 void GameStateMachine::popState()
 {
 	if (!vec_gameStates.empty())
 	{
-		if (vec_gameStates.back()->onExit())
+		if (vec_gameStates.top()->onExit())
 		{
-			delete vec_gameStates.back();
-			vec_gameStates.pop_back();
+			delete vec_gameStates.top();
+			vec_gameStates.pop();
 		}
 	}
 }
@@ -23,33 +23,31 @@ void GameStateMachine::changeState(GameState* pState)
 {
 	if (!vec_gameStates.empty())
 	{
-		if (vec_gameStates.back()->getStateID() == pState->getStateID())
+		if (vec_gameStates.top()->getStateID() == pState->getStateID())
 		{
 			return; // do nothing
 		}
-		if (vec_gameStates.back()->onExit())
+		if (vec_gameStates.top()->onExit())
 		{
-			delete vec_gameStates.back();
-			vec_gameStates.pop_back();
+			delete vec_gameStates.top();
+			vec_gameStates.pop();
 		}
 	}
-	// push back our new state
-	vec_gameStates.push_back(pState);
-	// initialise it
-	vec_gameStates.back()->onEnter();
+	vec_gameStates.push(pState);
+	vec_gameStates.top()->onEnter();
 }
 
 void GameStateMachine::update()
 {
 	if (!vec_gameStates.empty())
 	{
-		vec_gameStates.back()->update();
+		vec_gameStates.top()->update();
 	}
 }
 void GameStateMachine::render()
 {
 	if (!vec_gameStates.empty())
 	{
-		vec_gameStates.back()->render();
+		vec_gameStates.top()->render();
 	}
 }

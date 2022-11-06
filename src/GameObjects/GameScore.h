@@ -8,10 +8,9 @@ class GameScore : public GameObject
 public:
 	GameScore(const LoaderParams* pParams);
 	virtual void draw();
-	virtual void update();
 	virtual void clean() {};
 
-	void IncreaseScore();
+	void IncreaseScore(const uint8_t playerID = 0);
 
 private:
 	uint8_t score = 0;

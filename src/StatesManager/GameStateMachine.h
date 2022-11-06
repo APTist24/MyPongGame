@@ -1,8 +1,9 @@
 #ifndef __GameStateMachine__
 #define __GameStateMachine__
 
-#include <vector>
+#include <stack>
 #include "GameState.h"
+
 
 class GameStateMachine
 {
@@ -14,7 +15,7 @@ public:
 	void update();
 	void render();
 private:
-	std::vector<GameState*> vec_gameStates;
+	std::stack<GameState*> vec_gameStates;
 };
 
 #endif

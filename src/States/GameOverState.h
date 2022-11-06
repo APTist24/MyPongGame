@@ -7,20 +7,23 @@
 class GameOverState : public GameState
 {
 public:
+	GameOverState(uint8_t playerID_);
 	virtual void update();
 	virtual void render();
 
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	virtual std::string getStateID() const { return s_gameOverID; }
+	virtual std::string getStateID() const { return gameOverID; }
 
 private:
 
-	static void gameOverToMain();
-	static void restartPlay();
-	static const std::string s_gameOverID;
-	std::vector<class GameObject*> m_gameObjects;
+	static void onMenuPress();
+	static void onPlayPress();
+
+	static const std::string gameOverID;
+	std::vector<class GameObject*> gameObjects;
+	uint8_t playerID;
 
 };
 
