@@ -1,5 +1,4 @@
-#ifndef __UserVector__
-#define __UserVector__
+#pragma once
 
 #include <math.h>
 
@@ -73,4 +72,4 @@ private:
 	float x;
 	float y;
 };
-#endif
+

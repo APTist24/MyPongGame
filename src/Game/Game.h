@@ -1,5 +1,4 @@
-#ifndef __Game__
-#define __Game__
+#pragma once
 
 #include <memory>
 #include "GameStateMachine.h"
@@ -48,4 +47,3 @@ private:
 
 };
 
-#endif

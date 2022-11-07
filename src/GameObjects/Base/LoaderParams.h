@@ -1,5 +1,4 @@
-#ifndef __LoaderParams__
-#define __LoaderParams__
+#pragma once
 
 #include <string>
 
@@ -28,4 +27,3 @@ private:
 	int height;
 	std::string m_textureID;
 };
-#endif

@@ -10,7 +10,7 @@ const std::string PauseState::pauseID = "PAUSE";
 void PauseState::onMainMenuClick()
 {
 
-	Game::Instance()->getStateMachine()->changeState(new MenuState());
+	Game::Instance()->getStateMachine()->changeState(std::move(std::make_unique<MenuState>()));
 }
 
 void PauseState::onResumeClick()

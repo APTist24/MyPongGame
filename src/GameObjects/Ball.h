@@ -1,5 +1,4 @@
-#ifndef __Ball__
-#define __Ball__
+#pragma once
 
 #include "GameOBject.h"
 #include <functional>
@@ -25,4 +24,3 @@ private:
 	uint8_t maxBallSpeed = 12;
 
 };
-#endif

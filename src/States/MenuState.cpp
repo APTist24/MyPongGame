@@ -57,7 +57,7 @@ bool MenuState::onExit()
 
 void MenuState::onPlayPress()
 {
-	Game::Instance()->getStateMachine()->changeState(new PlayState());
+	Game::Instance()->getStateMachine()->changeState(std::move(std::make_unique<PlayState>()));
 }
 
 void MenuState::onQuitPress()

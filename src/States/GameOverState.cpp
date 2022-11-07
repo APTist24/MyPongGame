@@ -67,6 +67,6 @@ bool GameOverState::onExit()
 
 void GameOverState::onPlayPress()
 {
-	Game::Instance()->getStateMachine()->changeState(new PlayState());
+	Game::Instance()->getStateMachine()->changeState(std::move(std::make_unique<PlayState>()));
 }
 

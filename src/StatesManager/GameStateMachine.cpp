@@ -1,9 +1,9 @@
 #include "GameStateMachine.h"
 
 
-void GameStateMachine::pushState(GameState* pState)
+void GameStateMachine::pushState(std::unique_ptr<GameState>&& pState)
 {
-	vec_gameStates.push(pState);
+	vec_gameStates.push(std::move(pState));
 	vec_gameStates.top()->onEnter();
 }
 
@@ -13,13 +13,13 @@ void GameStateMachine::popState()
 	{
 		if (vec_gameStates.top()->onExit())
 		{
-			delete vec_gameStates.top();
+			//delete vec_gameStates.top();
 			vec_gameStates.pop();
 		}
 	}
 }
 
-void GameStateMachine::changeState(GameState* pState)
+void GameStateMachine::changeState(std::unique_ptr<GameState>&& pState)
 {
 	if (!vec_gameStates.empty())
 	{
@@ -29,11 +29,11 @@ void GameStateMachine::changeState(GameState* pState)
 		}
 		if (vec_gameStates.top()->onExit())
 		{
-			delete vec_gameStates.top();
+			//delete vec_gameStates.top();
 			vec_gameStates.pop();
 		}
 	}
-	vec_gameStates.push(pState);
+	vec_gameStates.push(std::move(pState));
 	vec_gameStates.top()->onEnter();
 }
 

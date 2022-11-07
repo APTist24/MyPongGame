@@ -1,5 +1,4 @@
-#ifndef __GameOverState__
-#define __GameOverState__
+#pragma once
 
 #include "GameState.h"
 #include <vector>
@@ -31,4 +30,3 @@ private:
 
 };
 
-#endif

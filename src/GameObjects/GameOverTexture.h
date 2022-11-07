@@ -1,5 +1,4 @@
-#ifndef __GameOverTexture__
-#define __GameOverTexture__
+#pragma once
 
 #include "GameObject.h"
 #include "SDL.h"
@@ -17,4 +16,3 @@ private:
 };
 
 
-#endif

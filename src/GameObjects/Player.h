@@ -1,5 +1,4 @@
-#ifndef _Player_
-#define _Player_
+#pragma once
 
 #include "GameObject.h"
 
@@ -16,5 +15,3 @@ public:
 private:
 	void handleInput();
 };
-
-#endif

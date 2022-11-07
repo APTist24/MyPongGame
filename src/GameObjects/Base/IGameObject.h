@@ -1,5 +1,4 @@
-#ifndef _IGameObject_
-#define _IGameObject_
+#pragma once
 
 #include "LoaderParams.h"
 
@@ -13,5 +12,3 @@ protected:
 	IGameObject(const LoaderParams* pParams) {}
 	virtual ~IGameObject() {}
 };
-
-#endif

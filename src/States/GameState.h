@@ -1,5 +1,4 @@
-#ifndef __GameState__
-#define __GameState__
+#pragma once
 
 #include<string>
 
@@ -14,5 +13,3 @@ public:
 	virtual std::string getStateID() const = 0;
 };
 
-
-#endif

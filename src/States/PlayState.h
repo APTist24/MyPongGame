@@ -1,5 +1,4 @@
-#ifndef __PlayState__
-#define __PlayState__
+#pragma once
 
 #include "GameState.h"
 #include <vector>
@@ -36,4 +35,4 @@ private:
 
 };
 
-#endif
+

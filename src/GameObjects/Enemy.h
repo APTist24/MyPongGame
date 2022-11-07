@@ -1,5 +1,4 @@
-#ifndef _Enemy_
-#define _Enemy_
+#pragma once
 
 #include "GameObject.h"
 #include <memory>
@@ -19,4 +18,3 @@ private:
 
 };
 
-#endif

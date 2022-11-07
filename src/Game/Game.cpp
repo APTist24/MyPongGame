@@ -55,7 +55,7 @@ bool Game::init(const char* title, int width,
 	isRunning = true; //main loop boolean, if false, stop game loop
 
 	StateManager = new GameStateMachine();
-	StateManager->changeState(new MenuState());
+	StateManager->changeState(std::move(std::make_unique<MenuState>()));
 
 	return true;
 }

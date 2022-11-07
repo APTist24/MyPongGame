@@ -16,7 +16,7 @@ void PlayState::update()
 {
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		Game::Instance()->getStateMachine()->pushState(new PauseState());
+		Game::Instance()->getStateMachine()->pushState(std::move(std::make_unique<PauseState>()));
 	}
 
 	for (auto obj: gameObjects)

@@ -1,5 +1,4 @@
-#ifndef __TextureManager__
-#define __TextureManager__
+#pragma once
 
 #include <string>
 #include <map>
@@ -112,4 +111,3 @@ private:
 };
 
 
-#endif

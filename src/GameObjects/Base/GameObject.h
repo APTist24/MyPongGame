@@ -1,5 +1,4 @@
-#ifndef __GameObject__
-#define __GameObject__
+#pragma once
 
 #include "IGameObject.h"
 #include <string>
@@ -30,4 +29,3 @@ protected:
 	Vector2D velocity;
 	Vector2D acceleration;
 };
-#endif

@@ -1,5 +1,4 @@
-#ifndef __InputHandler__
-#define __InputHandler__
+#pragma once
 
 #include <vector>
 #include "Vector2D.h"
@@ -58,4 +57,3 @@ private:
 
 };
 
-#endif

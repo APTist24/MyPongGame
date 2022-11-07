@@ -1,5 +1,4 @@
-#ifndef __PauseState__
-#define __PauseState__
+#pragma once
 
 #include "GameState.h"
 #include <vector>
@@ -22,4 +21,3 @@ private:
 	static const std::string pauseID;
 	std::vector<class GameObject*> gameObjects;
 };
-#endif

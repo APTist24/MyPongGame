@@ -1,5 +1,4 @@
-#ifndef __MenuButton__
-#define __MenuButton__
+#pragma once
 
 #include "GameObject.h"
 #include <functional>
@@ -25,4 +24,3 @@ private:
 
 	bool isReleased;
 };
-#endif

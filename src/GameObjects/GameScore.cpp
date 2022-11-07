@@ -21,6 +21,6 @@ void GameScore::IncreaseScore(const uint8_t playerID)
 {
 	++score;
 	if (score > 9)
-		Game::Instance()->getStateMachine()->changeState(new GameOverState(playerID));
+		Game::Instance()->getStateMachine()->changeState(std::move(std::make_unique<GameOverState>(playerID)));
 	else scoreTexture = TextureManager::Instance()->createTextureFromText(std::to_string(score));
 }

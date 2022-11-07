@@ -1,5 +1,5 @@
-#ifndef __GameScore__
-#define __GameScore__
+#pragma once
+
 #include "GameObject.h"
 #include "SDL.h"
 
@@ -18,4 +18,3 @@ private:
 	struct SDL_Texture* scoreTexture;
 	SDL_Rect rect;
 };
-#endif

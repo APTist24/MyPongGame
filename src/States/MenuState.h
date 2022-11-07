@@ -1,5 +1,4 @@
-#ifndef __MenuState__
-#define __MenuState__
+#pragma once
 
 #include "GameState.h"
 #include <vector>
@@ -22,5 +21,3 @@ private:
 	static void onQuitPress();
 
 };
-
-#endif
