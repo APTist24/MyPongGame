@@ -13,7 +13,6 @@ void GameStateMachine::popState()
 	{
 		if (vec_gameStates.top()->onExit())
 		{
-			//delete vec_gameStates.top();
 			vec_gameStates.pop();
 		}
 	}
@@ -29,7 +28,6 @@ void GameStateMachine::changeState(std::unique_ptr<GameState>&& pState)
 		}
 		if (vec_gameStates.top()->onExit())
 		{
-			//delete vec_gameStates.top();
 			vec_gameStates.pop();
 		}
 	}
