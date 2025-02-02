@@ -4,3 +4,6 @@
 [submodule "src/extern/SDL2"]
 	path = src/extern/SDL2
 	url = https://github.com/libsdl-org/SDL
+[submodule "extern/SDL"]
+	path = extern/SDL
+	url = https://github.com/libsdl-org/SDL
