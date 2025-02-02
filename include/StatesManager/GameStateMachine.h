@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stack>
-#include "GameState.h"
+#include <States/GameState.h>
 #include <memory>
 
 

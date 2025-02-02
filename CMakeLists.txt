@@ -1,33 +1,77 @@
 cmake_minimum_required(VERSION 3.15)
-project(MyPongGame VERSION 0.1.0 LANGUAGES CXX)
+project(MyGameEngine LANGUAGES C CXX)
 
-# Настройка стандарта C++
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_DEBUG_POSTFIX "d")  # Для отладочных версий библиотек
 
-# Включение SDL2 из папки extern
-add_subdirectory(extern/SDL2)
+# Включить поддержку папок в IDE
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-# Настройка исходников
-file(SOURCES 
-    "src/*.cpp"          # Все .cpp файлы в src/ и поддиректориях
+# Настройки SDL
+set(SDL_SHARED OFF CACHE BOOL "Build shared SDL3 library" FORCE)
+set(SDL_STATIC ON CACHE BOOL "Build static SDL3 library" FORCE)
+set(SDL_TEST OFF CACHE BOOL "Disable SDL tests" FORCE)
+
+# Настройки GLEW
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static GLEW" FORCE)
+set(GLEW_USE_STATIC_LIBS ON)
+
+# Добавляем подмодули
+add_subdirectory(extern/SDL)
+add_subdirectory(extern/glew)
+
+# Группировка целей SDL
+set(SDL_TARGETS SDL3-static SDL3_test SDL_uclibc)
+foreach(target IN LISTS SDL_TARGETS)
+    if(TARGET ${target})
+        set_property(TARGET ${target} PROPERTY FOLDER "extern/SDL")
+    endif()
+endforeach()
+
+# Группировка целей GLEW
+set(GLEW_TARGETS libglew_static)
+foreach(target IN LISTS GLEW_TARGETS)
+    if(TARGET ${target})
+        set_property(TARGET ${target} PROPERTY FOLDER "extern/glew")
+    endif()
+endforeach()
+
+# Исходники проекта
+file(GLOB_RECURSE SOURCES 
+    "src/*.cpp"
+    "src/*.c"
 )
 
-file(HEADERS 
-    "include/*.h"        # Все .h файлы в include/ и поддиректориях
+file(GLOB_RECURSE HEADERS 
+    "include/*.h"
+    "include/*.hpp"
 )
 
 # Создание исполняемого файла
-add_executable(MyPongGame  ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-# Подключение SDL2
-target_link_libraries(MyPongGame PRIVATE SDL2::SDL2)
+# Пути для заголовков
+target_include_directories(${PROJECT_NAME} PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/extern/SDL/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/extern/glew/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
 
-# Для Windows: копирование DLL
+# Линковка библиотек
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    SDL3-static     # Статическая SDL3
+    libglew_static  # Статическая GLEW
+)
+
+# Системные зависимости для Windows
 if(WIN32)
-    add_custom_command(TARGET MyPongGame POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-        "${CMAKE_SOURCE_DIR}/extern/SDL2/lib/x64/SDL2.dll"
-        $<TARGET_FILE_DIR:MyPongGame>
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        opengl32.lib
+        glu32.lib
     )
 endif()
+
+# Группировка исходников в IDE
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" PREFIX "src" FILES ${SOURCES})
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/include" PREFIX "include" FILES ${HEADERS})

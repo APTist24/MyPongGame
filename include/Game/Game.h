@@ -1,49 +1,53 @@
 #pragma once
 
-#include <memory>
-#include "GameStateMachine.h"
+#include <SDL3/SDL_video.h>
+#include <StatesManager/GameStateMachine.h>
+
+class SDL_Window;
 
 class Game
 {
-
 protected:
-	Game() {};
+    Game()
+    {
+    };
 
-	static Game* instance;
+    static Game* instance;
 
 public:
-	Game(Game& other) = delete;
-	void operator=(const Game&) = delete;
+    Game(Game& other) = delete;
+    void operator=(const Game&) = delete;
 
-	static Game* Instance();
+    static Game* Instance();
 
-	bool init(const char* title, int width, int
-		height, bool fullscreen);
+    bool init(const char* title, int width, int height, bool fullscreen);
 
-	void render();
-	void update();
-	void handleEvents();
-	void clean();
-	void quit() { isRunning = false; }
+    void render();
+    
+    void update();
+    
+    void handleEvents();
+    
+    void clean();
+    
+    void quit() { isRunning = false; }
 
-	bool running() { return isRunning; }
+    bool running() { return isRunning; }
 
-	struct SDL_Renderer* getRenderer() { return Renderer; }
+    struct SDL_Renderer* getRenderer() { return Renderer; }
 
-	struct _TTF_Font* getFont() { return Font; }
+    struct _TTF_Font* getFont() { return Font; }
 
-	GameStateMachine* getStateMachine() { return StateManager; }
-
+    GameStateMachine* getStateMachine() { return StateManager; }
 
 private:
+    bool isRunning;
 
-	bool isRunning;
+private:
+    SDL_Window* m_window;
+    SDL_GLContext m_glContext;
+    struct SDL_Renderer* Renderer;
+    struct _TTF_Font* Font;
 
-	struct SDL_Window* Window;
-	struct SDL_Renderer* Renderer;
-	struct _TTF_Font* Font;
-
-	GameStateMachine* StateManager;
-
+    GameStateMachine* StateManager;
 };
-
